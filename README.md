@@ -18,7 +18,7 @@
 
 ## 🎯 Overview
 
-SILIT (Sign Language Translator) is an AI-powered application that translates American Sign Language (ASL) hand signs into text in real-time. Using MediaPipe for hand tracking and a custom-trained neural network, SILIT achieves **90-95% accuracy** while running at **30 FPS** for smooth, responsive translation.
+SILIT (Sign Language Translator) is an AI-powered application that translates American Sign Language (ASL) hand signs into text in real-time. Using MediaPipe for hand tracking and a custom-trained neural network, SILIT achieves **90-95% accuracy** while running at **30 FPS** for smooth (depends on device), responsive translation.
 
 ### Why SILIT?
 
@@ -418,3 +418,4 @@ For questions, issues, or suggestions, please open an issue on GitHub.
 ⭐ Star this repo if you find it helpful!
 
 </div>
+
