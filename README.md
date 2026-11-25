@@ -110,34 +110,34 @@ python demo.py
 ## 🏗️ Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
+┌──────────────────────────────────────────────────────────────┐
 │                     SILIT Architecture                       │
-├─────────────────────────────────────────────────────────────┤
+├──────────────────────────────────────────────────────────────┤
 │                                                              │
-│  Camera Feed (1280×720 @ 30 FPS)                            │
+│  Camera Feed (1280×720 @ 30 FPS)                             │
 │      │                                                       │
 │      ▼                                                       │
-│  MediaPipe Hands ──► 21 Hand Landmarks (x, y, z)            │
+│  MediaPipe Hands ──► 21 Hand Landmarks (x, y, z)             │
 │      │                                                       │
 │      ▼                                                       │
-│  Feature Extraction ──► Normalized 63D Vector               │
+│  Feature Extraction ──► Normalized 63D Vector                │
 │      │                                                       │
 │      ▼                                                       │
-│  Neural Network (Dense + BatchNorm + Dropout)               │
+│  Neural Network (Dense + BatchNorm + Dropout)                │
 │      │                                                       │
 │      ▼                                                       │
-│  29-Class Softmax ──► A-Z + space, del, nothing             │
+│  29-Class Softmax ──► A-Z + space, del, nothing              │
 │      │                                                       │
 │      ▼                                                       │
-│  Prediction Smoothing ──► Rolling Buffer (10 frames)        │
+│  Prediction Smoothing ──► Rolling Buffer (10 frames)         │
 │      │                                                       │
 │      ▼                                                       │
-│  Word Builder ──► Stability Tracking (15 frames)            │
+│  Word Builder ──► Stability Tracking (15 frames)             │
 │      │                                                       │
 │      ▼                                                       │
-│  Display + TTS ──► Visual + Audio Output                    │
+│  Display + TTS ──► Visual + Audio Output                     │
 │                                                              │
-└─────────────────────────────────────────────────────────────┘
+└──────────────────────────────────────────────────────────────┘
 ```
 
 ### Tech Stack
@@ -163,7 +163,7 @@ python demo.py
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/silit.git
+   git clone https://github.com/Chanzwastaken/silit.git
    cd silit
    ```
 
@@ -405,7 +405,7 @@ This project is licensed under the MIT License.
 
 ## 📧 Contact
 
-**Project Link:** [https://github.com/yourusername/silit](https://github.com/yourusername/silit)
+**Project Link:** [https://github.com/Chanzwastaken/silit](https://github.com/Chanzwastaken/silit)
 
 For questions, issues, or suggestions, please open an issue on GitHub.
 
@@ -418,4 +418,3 @@ For questions, issues, or suggestions, please open an issue on GitHub.
 ⭐ Star this repo if you find it helpful!
 
 </div>
-
