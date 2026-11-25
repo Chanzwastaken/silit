@@ -1,0 +1,8 @@
+{
+  "num_classes": 29,
+  "labels": [
+    "A", "B", "C", "D", "del", "E", "F", "G", "H", "I", "J",
+    "K", "L", "M", "N", "nothing", "O", "P", "Q", "R", "S", "space",
+    "T", "U", "V", "W", "X", "Y", "Z"
+  ]
+}
