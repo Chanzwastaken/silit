@@ -1,14 +1,7 @@
 # SILIT dependencies
-# Python 3.10 or 3.11 recommended (MediaPipe and TensorFlow 2.13 both support these)
+# Python 3.10 or 3.11 recommended
 
 # Deep learning
- tensorflow==2.13.1
-
-# Computer vision / hand tracking
-opencv-python==4.8.1.78
-mediapipe==0.10.9
-
-# Data processing
 tensorflow==2.13.1
 
 # Computer vision / hand tracking
