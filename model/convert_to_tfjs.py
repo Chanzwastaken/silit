@@ -119,8 +119,9 @@ def main():
     )
     parser.add_argument(
         '--scaler',
-        default=str(ROOT / 'processed_data' / 'scaler.pkl'),
-        help='Fitted scaler (default: processed_data/scaler.pkl)',
+        default=str(ROOT / 'model' / 'processed_data' / 'scaler.pkl'),
+        help='Fitted scaler (default: model/processed_data/scaler.pkl, '
+             'same file app/config.py loads)',
     )
     parser.add_argument(
         '--quantize',
