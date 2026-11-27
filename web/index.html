@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SILIT - Sign Language Translator</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app__header">
+      <h1 class="app__title">SILIT</h1>
+      <p class="app__subtitle">
+        Real-time fingerspelling recognition, running entirely in your browser
+      </p>
+    </header>
+
+    <section class="stage">
+      <video id="video" class="stage__video" playsinline muted autoplay></video>
+      <canvas id="overlay" class="stage__overlay"></canvas>
+
+      <div class="stage__panel" id="permission-prompt">
+        <h2 class="stage__panel-title">Camera access needed</h2>
+        <p class="stage__panel-text">
+          Your hand landmarks are processed on this device. No video is uploaded
+          or stored anywhere.
+        </p>
+        <button id="start-button" class="button" type="button">Enable camera</button>
+      </div>
+
+      <div class="stage__panel stage__panel--error" id="error-banner" hidden>
+        <h2 class="stage__panel-title">Camera unavailable</h2>
+        <p class="stage__panel-text" id="error-text"></p>
+        <button id="retry-button" class="button button--quiet" type="button">Try again</button>
+      </div>
+    </section>
+
+    <section class="readout">
+      <div class="readout__cell">
+        <span class="readout__label">Letter</span>
+        <span class="readout__value" id="current-letter">&mdash;</span>
+      </div>
+      <div class="readout__cell readout__cell--grow">
+        <span class="readout__label">Word</span>
+        <span class="readout__value" id="current-word"></span>
+      </div>
+      <div class="readout__cell">
+        <span class="readout__label">Confidence</span>
+        <span class="readout__value readout__value--small" id="current-confidence">&mdash;</span>
+      </div>
+    </section>
+
+    <footer class="app__footer">
+      <span class="status" id="status">Idle</span>
+    </footer>
+  </main>
+
+  <script type="module" src="js/camera.js"></script>
+</body>
+</html>
