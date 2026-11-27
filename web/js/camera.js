@@ -1,10 +1,12 @@
 /**
- * SILIT - camera bootstrap.
+ * SILIT - camera and tracking bootstrap.
  *
- * Requests webcam access, attaches the stream to the video element and
- * sizes the overlay canvas. The landmark and model pipeline attach here
- * in later stages; this file owns only the camera lifecycle.
+ * Requests webcam access, attaches the stream to the video element, sizes
+ * the overlay canvas and starts hand landmark tracking once the camera is
+ * live. Classification attaches on top of the landmark callback.
  */
+
+import { HandTracker } from './landmarks.js';
 
 const el = {
   video: document.querySelector('#video'),
@@ -18,6 +20,7 @@ const el = {
 };
 
 let stream = null;
+let tracker = null;
 
 function setStatus(text) {
   el.status.textContent = text;
@@ -54,6 +57,34 @@ function sizeOverlay() {
   el.overlay.height = videoHeight;
 }
 
+/** Receives the 21 landmarks (or null when no hand is visible). */
+function onLandmarks(landmarks) {
+  // Placeholder until classification is wired in.
+  // landmarks === null means no hand in frame.
+  void landmarks;
+}
+
+async function startTracking() {
+  tracker = new HandTracker({
+    video: el.video,
+    canvas: el.overlay,
+    onLandmarks,
+    onStatus: setStatus,
+  });
+
+  try {
+    await tracker.init();
+  } catch (error) {
+    showError(
+      `Hand tracking could not load: ${error && error.message ? error.message : 'unknown error'}`
+    );
+    return;
+  }
+
+  tracker.start();
+  setStatus('Tracking');
+}
+
 async function startCamera() {
   el.errorBanner.hidden = true;
   setStatus('Requesting camera...');
@@ -85,6 +116,8 @@ async function startCamera() {
   el.prompt.hidden = true;
   sizeOverlay();
   setStatus('Camera live');
+
+  await startTracking();
 }
 
 el.startButton.addEventListener('click', startCamera);
@@ -92,6 +125,7 @@ el.retryButton.addEventListener('click', startCamera);
 el.video.addEventListener('loadedmetadata', sizeOverlay);
 
 window.addEventListener('pagehide', () => {
+  if (tracker) tracker.stop();
   if (stream) {
     stream.getTracks().forEach((track) => track.stop());
   }
