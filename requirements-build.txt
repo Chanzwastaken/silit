@@ -1,0 +1,8 @@
+# Build-time only: needed to convert the Keras model for the browser
+# build. Not required to run the Python desktop app.
+#
+#   pip install -r requirements-build.txt
+#   python model/convert_to_tfjs.py
+
+tensorflow==2.13.1
+tensorflowjs==4.15.0
